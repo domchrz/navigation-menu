@@ -1,0 +1,54 @@
+/*!***************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \***************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+/*!*******************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/index.scss (1) ***!
+  \*******************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Ms+Madi&family=Playfair+Display:wght@400;500&display=swap);
+/*!*******************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/index.scss (2) ***!
+  \*******************************************************************************************************************************************************/
+:root {
+  --font: #edf6f9;
+  --font-dark: #001219;
+  --bg: #90E0EF;
+  --bg-dark: #00B4D8;
+  --bg-light: #CAF0F8;
+  --action: #fee440;
+  --warning: #dc143c;
+  --border-radius: 0.35rem;
+  --box-shadow: .1rem .1rem .5rem hsla(0, 0%, 0%, .3);
+  --inset-shadow: inset .1rem .1rem .5rem hsla(0, 0%, 0%, .3);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Playfair Display", sans-serif;
+  color: #edf6f9;
+  color: var(--font);
+  background-color: #00B4D8;
+  background-color: var(--bg-dark);
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  color: #edf6f9;
+  color: var(--font);
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYnVuZGxlLmMyNzJjZDI0MDhkMmJhMDZiM2Q1LmNzcyIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7OztBQUdBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7QUFBRjs7QUFHQTtFQUNFO0VBQ0E7RUFDQTtBQUFGOztBQUdBO0VBQ0U7RUFDQTtFQUFBO0VBQ0E7RUFBQTtBQUFGOztBQUdBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQUE7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0FBQUYsQyIsInNvdXJjZXMiOlsid2VicGFjazovL3JlYWN0LXRvLWRvLWxpc3QvLi9zcmMvaW5kZXguc2NzcyJdLCJzb3VyY2VzQ29udGVudCI6WyJAaW1wb3J0IHVybCgnaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9pY29uP2ZhbWlseT1NYXRlcmlhbCtJY29ucycpO1xyXG5AaW1wb3J0IHVybCgnaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1NcytNYWRpJmZhbWlseT1QbGF5ZmFpcitEaXNwbGF5OndnaHRANDAwOzUwMCZkaXNwbGF5PXN3YXAnKTtcclxuXHJcbjpyb290IHtcclxuICAtLWZvbnQ6ICNlZGY2Zjk7XHJcbiAgLS1mb250LWRhcms6ICMwMDEyMTk7XHJcbiAgLS1iZzogIzkwRTBFRjtcclxuICAtLWJnLWRhcms6ICMwMEI0RDg7XHJcbiAgLS1iZy1saWdodDogI0NBRjBGODtcclxuICAtLWFjdGlvbjogI2ZlZTQ0MDtcclxuICAtLXdhcm5pbmc6ICNkYzE0M2M7XHJcbiAgLS1ib3JkZXItcmFkaXVzOiAwLjM1cmVtO1xyXG4gIC0tYm94LXNoYWRvdzogLjFyZW0gLjFyZW0gLjVyZW0gaHNsYSgwLCAwJSwgMCUsIC4zKTtcclxuICAtLWluc2V0LXNoYWRvdzogaW5zZXQgLjFyZW0gLjFyZW0gLjVyZW0gaHNsYSgwLCAwJSwgMCUsIC4zKTtcclxufVxyXG5cclxuKiwgKjo6YmVmb3JlLCAqOjphZnRlciB7XHJcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcclxuICBwYWRkaW5nOiAwO1xyXG4gIG1hcmdpbjogMDtcclxufVxyXG5cclxuYm9keSB7XHJcbiAgZm9udC1mYW1pbHk6ICdQbGF5ZmFpciBEaXNwbGF5Jywgc2Fucy1zZXJpZjtcclxuICBjb2xvcjogdmFyKC0tZm9udCk7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tYmctZGFyayk7XHJcbn1cclxuXHJcbi5tYXRlcmlhbC1pY29ucyB7XHJcbiAgZm9udC1mYW1pbHk6ICdNYXRlcmlhbCBJY29ucyc7XHJcbiAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcclxuICBmb250LXN0eWxlOiBub3JtYWw7XHJcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gIGxpbmUtaGVpZ2h0OiAxO1xyXG4gIGNvbG9yOiB2YXIoLS1mb250KTtcclxuICB0ZXh0LXRyYW5zZm9ybTogbm9uZTtcclxuICBsZXR0ZXItc3BhY2luZzogbm9ybWFsO1xyXG4gIHdvcmQtd3JhcDogbm9ybWFsO1xyXG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XHJcbiAgZGlyZWN0aW9uOiBsdHI7XHJcbn0iXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=*/
