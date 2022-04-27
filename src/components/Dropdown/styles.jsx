@@ -33,7 +33,7 @@ export const DropdownContainer = styled.div`
       opacity: 1;
     }
     to {
-      transform: translateX(100%) scale(0.8);
+      transform: translateY(-150%) scale(0.8);
       opacity: 0;
     }
   }

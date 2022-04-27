@@ -17,7 +17,7 @@ export default function useMountDelays(items, areMounted, delay) {
     for (const key in areMounted) {
       if (!debounce[key]) return;
       if (areMounted[key]) {
-        debounce[key](0, () => dispatch(actions[`${key}Open`]));
+        debounce[key](delay / 2, () => dispatch(actions[`${key}Open`]));
       } else {
         debounce[key](delay, () => dispatch(actions[`${key}Close`]));
       }

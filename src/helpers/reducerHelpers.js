@@ -33,10 +33,6 @@ const createMenuReducer = (initState, actions) => {
     for (const key in actions) {
       if (actions[key].type === action.type) {
         const slice = action.type.split('_')[1];
-        // updatedState = {
-        //   ...state,
-        //   [`${action.type.split('_')[1]}`]: action.payload,
-        // };
         updatedState = {
           ...state,
           [slice.charAt(0) + slice.slice(1).toLowerCase()]: action.payload,
