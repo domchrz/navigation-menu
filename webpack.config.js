@@ -31,7 +31,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'To-Do List',
+      title: 'Nav-menu',
       filename: 'index.html',
       template: path.resolve(__dirname, 'src/template.html'),
     }),
