@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { ModalContainer } from './styles';
+import { DropdownContainer } from './styles';
 
-export default function Modal({
+export default function Dropdown({
   anchorRef,
   shouldMount,
   delay,
-  handleMount,
-  handleUnmount,
   stickToBorder,
   children,
 }) {
@@ -18,11 +16,11 @@ export default function Modal({
     const origin = {};
     switch (stickToBorder) {
       case 'top':
-        origin.top = clientRect.bottom;
+        origin.bottom = clientRect.top;
         origin.left = clientRect.left;
         break;
       case 'bottom':
-        origin.bottom = clientRect.top;
+        origin.top = clientRect.bottom;
         origin.left = clientRect.left;
         break;
       case 'left':
@@ -31,22 +29,19 @@ export default function Modal({
         break;
       case 'right':
         origin.left = clientRect.right;
-        origin.top = origin.top = clientRect.top;
+        origin.top = clientRect.top;
         break;
     }
     setRenderOrigin(origin);
   }, [anchorRef]);
 
-
   return ReactDOM.createPortal(
-    <ModalContainer
-      onMouseOver={handleMount}
-      onMouseLeave={handleUnmount}
+    <DropdownContainer
       className={shouldMount ? 'mount' : 'unmount'}
       renderOrigin={renderOrigin}
       delay={delay}>
       {children}
-    </ModalContainer>,
+    </DropdownContainer>,
     document.body
   );
 }

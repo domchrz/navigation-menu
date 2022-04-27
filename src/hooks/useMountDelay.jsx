@@ -1,18 +1,28 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useReducer, useState } from 'react';
+import { createReducerHelpers } from '../helpers/reducerHelpers';
 import db from '../helpers/debounce';
 
-export default function useMountDelay(isMounted, delay) {
-  const [shouldRender, setShouldRender] = useState(false);
-
-  const debounce = useCallback(db(), []);
+export default function useMountDelays(items, areMounted, delay) {
+  const { initState, actions, reducer } = createReducerHelpers(items);
+  const [shouldRender, dispatch] = useReducer(reducer, initState);
+  const [debounce, setDebounce] = useState({});
 
   useEffect(() => {
-    if (isMounted) {
-      debounce(0, setShouldRender, true);
-    } else if (!isMounted) {
-      debounce(delay, setShouldRender, false);
+    for (const key in initState) {
+      setDebounce(prevState => ({ ...prevState, [key]: db() }));
     }
-  }, [isMounted]);
-  
+  }, []);
+
+  useEffect(() => {
+    for (const key in areMounted) {
+      if (!debounce[key]) return;
+      if (areMounted[key]) {
+        debounce[key](0, () => dispatch(actions[`${key}Open`]));
+      } else {
+        debounce[key](delay, () => dispatch(actions[`${key}Close`]));
+      }
+    }
+  }, [areMounted]);
+
   return shouldRender;
 }

@@ -1,6 +1,5 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
-
-import Navbar from './components/Navbar';
+import Navbar2 from './components/Navbar/Navbar';
 import About from './pages/About';
 import Home from './pages/Home';
 import Products from './pages/Products';
@@ -11,7 +10,7 @@ export default function App() {
   return (
     <>
       <header>
-        <Navbar />
+        <Navbar2 />
       </header>
       <main>
         <Switch>

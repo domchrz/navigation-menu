@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ModalContainer = styled.div`
+export const DropdownContainer = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -22,22 +22,22 @@ export const ModalContainer = styled.div`
 
   @keyframes mount {
     from {
-      transform: translateY(-100%);
+      transform: translateY(-100%) scale(0.8);
       opacity: 0;
     }
     to {
-      transform: translate(0);
+      transform: translate(0) scale(1);
       opacity: 1;
     }
   }
 
   @keyframes unmount {
     from {
-      transform: translate(0);
+      transform: translate(0) scale(1);
       opacity: 1;
     }
     to {
-      transform: translateY(-100%);
+      transform: translateX(100%) scale(0.8);
       opacity: 0;
     }
   }
