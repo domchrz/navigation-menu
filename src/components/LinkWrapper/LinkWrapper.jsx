@@ -10,7 +10,7 @@ const LinkWrapper = forwardRef(function LinkWrap(props, ref) {
             ref={ref}
             isNested={props.isNested}
             onClick={props.handleClick}>
-            {props.item.name}
+            <span>{props.item.name}{props.item.children?.length && ' >'}</span>
             {props.children}
           </MenuItem>
         </>
@@ -21,7 +21,7 @@ const LinkWrapper = forwardRef(function LinkWrap(props, ref) {
             ref={ref}
             to={props.item.path}
             onClick={props.handleClick}>
-            {props.item.name}
+            <span>{props.item.name}{props.item.children?.length && ' >'}</span>
             {props.children}
           </StyledLink>
         </>
@@ -36,7 +36,7 @@ const LinkWrapper = forwardRef(function LinkWrap(props, ref) {
               e.stopPropagation();
               props.handleHover(e);
             }}>
-            {props.item.name}
+            <span>{props.item.name}{props.item.children?.length && ' v'}</span>
             {props.children}
           </StyledNavLink>
         </>

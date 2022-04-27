@@ -11,6 +11,7 @@ export default function Navbar() {
   const [showChildren, toggleNestedMenu, closeMenu, openMenu] = useNestedMenu(MENU_ITEMS);
   const shouldRender = useMountDelay(MENU_ITEMS, showChildren, delay);
   const [refs, setRefs] = useState({});
+  console.log('run');
 
   useEffect(() => {
     for (const key in showChildren) {

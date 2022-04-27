@@ -18,7 +18,6 @@ const useNestedMenu = menuItems => {
 
   const toggleNestedMenu = (item, e, children) => {
     e?.stopPropagation();
-    console.log('children ', children);
     if (showChildren[item.name.toLowerCase()]) {
       closeNested(children);
     } else {
@@ -29,9 +28,9 @@ const useNestedMenu = menuItems => {
 
   const closeMenu = (e = null) => {
     e?.stopPropagation();
-    for (const key in actions) {
-      if (key.includes('Close')) {
-        dispatch(actions[key]);
+    for (const key in showChildren) {
+      if (showChildren[key]) {
+        dispatch(actions[key + 'Close']);
       }
     }
   };
