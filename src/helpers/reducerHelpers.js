@@ -4,7 +4,7 @@ const createMenuState = items => {
     if (item.children?.length) {
       state = {
         ...state,
-        [item.name.toLowerCase()]: false,
+        [item.name]: false,
         ...createMenuState(item.children),
       };
     }
@@ -32,9 +32,14 @@ const createMenuReducer = (initState, actions) => {
     let updatedState = state;
     for (const key in actions) {
       if (actions[key].type === action.type) {
+        const slice = action.type.split('_')[1];
+        // updatedState = {
+        //   ...state,
+        //   [`${action.type.split('_')[1]}`]: action.payload,
+        // };
         updatedState = {
           ...state,
-          [`${action.type.split('_')[1].toLowerCase()}`]: action.payload,
+          [slice.charAt(0) + slice.slice(1).toLowerCase()]: action.payload,
         };
       }
     }

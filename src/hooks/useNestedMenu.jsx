@@ -10,7 +10,7 @@ const useNestedMenu = menuItems => {
   const closeNested = items => {
     items.forEach(item => {
       if (item.children?.length) {
-        dispatch(actions[`${item.name.toLowerCase()}Close`]);
+        dispatch(actions[`${item.name}Close`]);
         closeNested(item.children);
       }
     });
@@ -18,11 +18,11 @@ const useNestedMenu = menuItems => {
 
   const toggleNestedMenu = (item, e, children) => {
     e?.stopPropagation();
-    if (showChildren[item.name.toLowerCase()]) {
+    if (showChildren[item.name]) {
       closeNested(children);
     } else {
       closeNested(children.filter(({ name }) => name !== item.name));
-      dispatch(actions[`${item.name.toLowerCase()}Open`]);
+      dispatch(actions[`${item.name}Open`]);
     }
   };
 
@@ -37,11 +37,8 @@ const useNestedMenu = menuItems => {
 
   const openMenu = (name, e = null) => {
     e?.stopPropagation();
-    if (
-      !showChildren[name.toLowerCase()] &&
-      actions[name.toLowerCase() + 'Open']
-    ) {
-      dispatch(actions[name.toLowerCase() + 'Open']);
+    if (!showChildren[name] && actions[name + 'Open']) {
+      dispatch(actions[name + 'Open']);
     }
   };
 
