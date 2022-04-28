@@ -10,7 +10,7 @@ export const DropdownContainer = styled.div`
   transform: translateY(-100%);
 
   &.mount {
-    animation: mount ${({ delay }) => delay}ms ease-out forwards;
+    animation: mount ${({ delay }) => delay}ms ease-in-out forwards;
   }
 
   &.unmount {
@@ -20,11 +20,9 @@ export const DropdownContainer = styled.div`
   @keyframes mount {
     from {
       transform: translateY(-100%);
-      opacity: 0;
     }
     to {
       transform: translate(0);
-      opacity: 1;
     }
   }
 

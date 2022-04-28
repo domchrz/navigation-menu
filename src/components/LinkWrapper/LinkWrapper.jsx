@@ -10,7 +10,7 @@ const LinkWrapper = forwardRef(function LinkWrap(props, ref) {
             isActive={props.isActive}
             ref={ref}
             isNested={props.isNested}
-            onClick={props.handleClick}>
+            onMouseEnter={props.handleEnter}>
             <span>{props.item.name}{props.item.children?.length && ' >'}</span>
             {props.children}
           </MenuItem>
@@ -22,7 +22,7 @@ const LinkWrapper = forwardRef(function LinkWrap(props, ref) {
             isActive={props.isActive}
             ref={ref}
             to={props.item.path}
-            onClick={props.handleClick}>
+            onMouseEnter={props.handleEnter}>
             <span>{props.item.name}{props.item.children?.length && ' >'}</span>
             {props.children}
           </StyledLink>
@@ -33,11 +33,8 @@ const LinkWrapper = forwardRef(function LinkWrap(props, ref) {
           <StyledNavLink
             ref={ref}
             to={props.item.path}
-            onClick={props.handleClick}
-            onMouseEnter={e => {
-              e.stopPropagation();
-              props.handleHover(e);
-            }}>
+            onClick={e => props.handleClick(e, false, 0)}
+            onMouseEnter={props.handleEnter}>
             <span>{props.item.name}{props.item.children?.length && ' v'}</span>
             {props.children}
           </StyledNavLink>
@@ -49,11 +46,8 @@ const LinkWrapper = forwardRef(function LinkWrap(props, ref) {
             ref={ref}
             exact
             to={props.item.path}
-            onClick={props.handleClick}
-            onMouseEnter={e => {
-              e.stopPropagation();
-              props.handleHover(e);
-            }}>
+            onClick={e => props.handleClick(e, false, 0)}
+            onMouseEnter={props.handleEnter}>
             {props.item.name}
             {props.children}
           </StyledNavLink>

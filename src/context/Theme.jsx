@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 const theme = {
   colors: {
     main: '#edf6f9',
-    mainContrast: '#001219',
+    mainContrast: '#072531',
     secondary: '#00B4D8',
     secondaryContrast: '#CAF0F8',
     action: '#fee440',
