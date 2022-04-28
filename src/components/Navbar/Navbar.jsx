@@ -1,4 +1,4 @@
-import { createRef, useState, useEffect } from 'react';
+import React, { createRef, useState, useEffect } from 'react';
 import useMountDelay from '../../hooks/useMountDelay';
 import useNestedMenu from '../../hooks/useNestedMenu';
 import MENU_ITEMS from '../../constants/menuItems';
@@ -6,9 +6,9 @@ import Dropdown from '../Dropdown';
 import LinkWrapper from '../LinkWrapper';
 import { StyledNav } from './styles';
 
-export default function Navbar() {
+function navbar() {
   const delay = 300;
-  const [showChildren, toggleNestedMenu, closeMenu, openMenu] =
+  const [showChildren, setShowChildren] =
     useNestedMenu(MENU_ITEMS);
   const shouldRender = useMountDelay(MENU_ITEMS, showChildren, delay);
   const [refs, setRefs] = useState({});
@@ -20,6 +20,8 @@ export default function Navbar() {
     setRefs(prevState => ({ ...prevState, nav: createRef() }));
   }, []);
 
+
+
   const renderMenu = (items, isNested = false, parent = null) => {
     return items.map(item => (
       <LinkWrapper
@@ -27,11 +29,12 @@ export default function Navbar() {
         item={item}
         isNested={isNested}
         ref={refs[item.name]}
-        handleHover={e => openMenu(item.name, e)}
+        isActive={setShowChildren.setIsItemActive(item, parent)}
+        handleHover={e => setShowChildren.openSubmenu(item.name, e)}
         handleClick={
           !item.children?.length || !parent
-            ? e => closeMenu(e)
-            : e => toggleNestedMenu(item, e, parent.children)
+            ? e => setShowChildren.closeSubmenu(e)
+            : e => setShowChildren.toggleNested(item, e, parent.children)
         }>
         {item.children?.length && shouldRender[item.name] && (
           <Dropdown
@@ -54,3 +57,7 @@ export default function Navbar() {
 
   return <StyledNav ref={refs.nav}>{renderMenu(MENU_ITEMS)}</StyledNav>;
 }
+
+const Navbar = React.memo(navbar);
+
+export default Navbar;

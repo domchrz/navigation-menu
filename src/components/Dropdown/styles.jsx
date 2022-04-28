@@ -18,22 +18,22 @@ export const DropdownContainer = styled.div`
 
   @keyframes mount {
     from {
-      transform: translateY(-100%) scale(0.8);
+      transform: translateY(-100%);
       opacity: 0;
     }
     to {
-      transform: translate(0) scale(1);
+      transform: translate(0);
       opacity: 1;
     }
   }
 
   @keyframes unmount {
     from {
-      transform: translate(0) scale(1);
+      transform: translate(0);
       opacity: 1;
     }
     to {
-      transform: translateY(-150%) scale(0.8);
+      transform: translateY(-150%);
       opacity: 0;
     }
   }

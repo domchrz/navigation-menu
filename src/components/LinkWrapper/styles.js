@@ -8,8 +8,10 @@ const linkStyles = css`
   font-family: 'Ms Madi', cursive;
   text-decoration: none;
   transition: color 0.3s;
-  color: ${props => props.theme.colors.secondary};
-  background-color: ${props => props.theme.colors.main};
+  color: ${props =>
+    props.isActive ? props.theme.colors.main : props.theme.colors.secondary};
+  background-color: ${props =>
+    props.isActive ? props.theme.colors.mainContrast : props.theme.colors.main};
   border: solid 1px ${props => props.theme.colors.secondary};
 
   &:hover {

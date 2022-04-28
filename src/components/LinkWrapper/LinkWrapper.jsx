@@ -7,6 +7,7 @@ const LinkWrapper = forwardRef(function LinkWrap(props, ref) {
       {!props.item.path && (
         <>
           <MenuItem
+            isActive={props.isActive}
             ref={ref}
             isNested={props.isNested}
             onClick={props.handleClick}>
@@ -18,6 +19,7 @@ const LinkWrapper = forwardRef(function LinkWrap(props, ref) {
       {props.isNested && props.item.path && (
         <>
           <StyledLink
+            isActive={props.isActive}
             ref={ref}
             to={props.item.path}
             onClick={props.handleClick}>
