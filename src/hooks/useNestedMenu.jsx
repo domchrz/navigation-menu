@@ -33,11 +33,12 @@ const useNestedMenu = (menuItems, delay, navRef) => {
   };
 
   const toggleNested = (item, e) => {
-    e?.stopPropagation();
+    e.stopPropagation();
     const siblings = findSiblings(item.name);
     closeNested(siblings);
-    if (showChildren[item.name] !== undefined)
+    if (showChildren[item.name] !== undefined) {
       dispatch(actions[`${item.name}Open`]);
+    }
   };
 
   const handleMenuLeave = (e, openMenu = false, delay = 500) => {
@@ -96,13 +97,13 @@ const useNestedMenu = (menuItems, delay, navRef) => {
         isActive={setIsItemActive(item, parent)}
         handleEnter={
           parent
-            ? e => toggleNested(item, e, parent?.children, true)
+            ? e => toggleNested(item, e)
             : e => openSubmenu(item.name, e)
         }
         handleClick={
           !item.children?.length || !parent
             ? handleMenuLeave
-            : e => toggleNested(item, e, parent.children)
+            : e => toggleNested(item, e)
         }>
         {item.children?.length && shouldRender[item.name] && (
           <Dropdown

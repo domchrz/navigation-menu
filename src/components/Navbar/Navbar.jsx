@@ -7,7 +7,6 @@ function navbar() {
   const delay = 300;
   const [navRef, setNavRef] = useState(createRef());
   const [{ renderMenu, handleMenuLeave }] = useNestedMenu(MENU_ITEMS, delay, navRef);
-  // console.log('nav');
 
   return (
     <StyledNav

@@ -16,12 +16,14 @@ export default function Dropdown({
   }, [anchorRef]);
 
   return ReactDOM.createPortal(
-    <DropdownContainer
-      className={shouldMount ? 'mount' : 'unmount'}
-      renderOrigin={renderOrigin}
-      delay={delay}>
-      {children}
-    </DropdownContainer>,
+    <>
+      {!!renderOrigin.left && (<DropdownContainer
+        className={shouldMount ? 'mount' : 'unmount'}
+        renderOrigin={renderOrigin}
+        delay={delay}>
+        {children}
+      </DropdownContainer>)}
+    </>,
     document.body
   );
 }
