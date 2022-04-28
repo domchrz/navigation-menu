@@ -7,6 +7,7 @@ const useNestedMenu = menuItems => {
   );
   const [showChildren, dispatch] = useReducer(reducer, initState);
 
+
   const closeNested = items => {
     items.forEach(item => {
       if (item.children?.length) {
@@ -70,16 +71,14 @@ const useNestedMenu = menuItems => {
   const setIsItemActive = useCallback(
     (item, parent = null) => {
       if (!parent) return;
-      let isActive;
       if (item.children?.length && menuItems.find(i => i === parent)) {
-        isActive = showChildren[item.name];
+        return showChildren[item.name];
       } else {
         const siblings = findSiblings(item.name).filter(
           i => i.name !== item.name
         );
-        isActive = !siblings.some(sibling => showChildren[sibling.name]);
+        return !siblings.some(sibling => showChildren[sibling.name]);
       }
-      return isActive;
     },
     [menuItems, showChildren]
   );
@@ -89,7 +88,10 @@ const useNestedMenu = menuItems => {
     return () => window.removeEventListener('click', handleOuterClick);
   }, [handleOuterClick]);
 
-  return [showChildren, { toggleNested, closeSubmenu, openSubmenu, setIsItemActive }];
+  return [
+    showChildren,
+    { toggleNested, closeSubmenu, openSubmenu, setIsItemActive },
+  ];
 };
 
 export default useNestedMenu;
