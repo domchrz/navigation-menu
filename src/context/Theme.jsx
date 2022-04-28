@@ -10,8 +10,8 @@ const theme = {
     warning: '#dc143c;'
   },
   fonts: {
-    serif: `'Playfair Display', sans-serif`,
-    sansSerif: `'Ms Madi', cursive`,
+    sansSerf: `'Playfair Display', sans-serif`,
+    serif: `'Ms Madi', cursive`,
     materialIcon: `
     display: flex;
     justify-content: center;

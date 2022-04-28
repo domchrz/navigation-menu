@@ -5,9 +5,9 @@ import styled, { css } from 'styled-components';
 const linkStyles = css`
   padding: 0.5rem 1rem;
   font-size: 1.6rem;
-  font-family: 'Ms Madi', cursive;
+  font-family: ${props => props.theme.fonts.serif};
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.3s, background-color 0.3s;
   color: ${props =>
     props.isActive ? props.theme.colors.main : props.theme.colors.secondary};
   background-color: ${props =>
