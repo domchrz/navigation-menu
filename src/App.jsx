@@ -17,26 +17,23 @@ export default function App() {
           <Route exact path="/">
             <Home />
           </Route>
+          <Route path="/about">
+            <About />
+          </Route>
           <Route exact path="/products">
             <Products />
           </Route>
-          <Route path="/products/:name">
+          <Route exact path="/products/:name">
             <Category />
           </Route>
           <Route path="/products/:name/:id">
             <ProductDetails />
-          </Route>
-          <Route path="/about">
-            <About />
           </Route>
           <Route path="*">
             <Redirect to="/" />
           </Route>
         </Switch>
       </main>
-      <footer>
-        {/* <Footer /> */}
-      </footer>
     </>
   );
 }

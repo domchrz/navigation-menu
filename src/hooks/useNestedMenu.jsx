@@ -1,7 +1,7 @@
 import { useState, useReducer, useCallback, useEffect, createRef } from 'react';
 import Dropdown from '../components/Dropdown';
 import LinkWrapper from '../components/LinkWrapper';
-import { createReducerHelpers } from '../helpers/reducerHelpers';
+import { createReducerHelpers } from '../helpers/reducer';
 import db from '../helpers/debounce';
 import useMountDelay from './useMountDelay';
 
@@ -14,6 +14,7 @@ const useNestedMenu = (menuItems, delay, navRef) => {
   const shouldRender = useMountDelay(menuItems, showChildren, delay);
 
   const debounce = useCallback(db(), []);
+     
 
   useEffect(() => {
     for (const key in showChildren) {
@@ -25,7 +26,7 @@ const useNestedMenu = (menuItems, delay, navRef) => {
   const closeNested = items => {
     if (!items) return;
     items.forEach(item => {
-      if (item.children?.length) {
+      if (item.children?.length && showChildren[item.name]) {
         dispatch(actions[`${item.name}Close`]);
         closeNested(item.children);
       }
@@ -34,7 +35,7 @@ const useNestedMenu = (menuItems, delay, navRef) => {
 
   const toggleNested = (item, e) => {
     e.stopPropagation();
-    const siblings = findSiblings(item.name);
+    const siblings = getSiblings(item.name);
     closeNested(siblings);
     if (showChildren[item.name] !== undefined) {
       dispatch(actions[`${item.name}Open`]);
@@ -55,7 +56,7 @@ const useNestedMenu = (menuItems, delay, navRef) => {
     }
   };
 
-  const findSiblings = useCallback(
+  const getSiblings = useCallback(
     (itemName, children = null) => {
       let siblings = [];
       let currentChildren = children || menuItems;
@@ -63,7 +64,7 @@ const useNestedMenu = (menuItems, delay, navRef) => {
         if (showChildren[item.name]) {
           item.children.find(i => i.name === itemName)
             ? (siblings = item.children)
-            : (siblings = findSiblings(itemName, item.children));
+            : (siblings = getSiblings(itemName, item.children));
         }
       });
       siblings = siblings.length
@@ -80,7 +81,7 @@ const useNestedMenu = (menuItems, delay, navRef) => {
       if (item.children?.length && menuItems.find(i => i === parent)) {
         return showChildren[item.name];
       } else {
-        const siblings = findSiblings(item.name);
+        const siblings = getSiblings(item.name);
         return !siblings.some(sibling => showChildren[sibling.name]);
       }
     },
@@ -96,9 +97,7 @@ const useNestedMenu = (menuItems, delay, navRef) => {
         ref={refs[item.name]}
         isActive={setIsItemActive(item, parent)}
         handleEnter={
-          parent
-            ? e => toggleNested(item, e)
-            : e => openSubmenu(item.name, e)
+          parent ? e => toggleNested(item, e) : e => openSubmenu(item.name, e)
         }
         handleClick={
           !item.children?.length || !parent
@@ -110,8 +109,8 @@ const useNestedMenu = (menuItems, delay, navRef) => {
             origin={{
               top: refs.nav.current.getBoundingClientRect().bottom,
               left: parent
-                ? refs[item.name].current.getBoundingClientRect().right
-                : refs[item.name].current.getBoundingClientRect().left,
+                ? refs[item.name]?.current?.getBoundingClientRect().right
+                : refs[item.name]?.current?.getBoundingClientRect().left,
             }}
             anchorRef={refs[item.name]}
             delay={delay}
