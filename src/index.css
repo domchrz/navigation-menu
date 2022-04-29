@@ -1,19 +1,6 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://fonts.googleapis.com/css2?family=Ms+Madi&family=Playfair+Display:wght@400;500&display=swap');
 
-:root {
-  --font: #edf6f9;
-  --font-dark: #001219;
-  --bg: #90E0EF;
-  --bg-dark: #00B4D8;
-  --bg-light: #CAF0F8;
-  --action: #fee440;
-  --warning: #dc143c;
-  --border-radius: 0.35rem;
-  --box-shadow: .1rem .1rem .5rem hsla(0, 0%, 0%, .3);
-  --inset-shadow: inset .1rem .1rem .5rem hsla(0, 0%, 0%, .3);
-}
-
 *, *::before, *::after {
   box-sizing: border-box;
   padding: 0;

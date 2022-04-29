@@ -1,5 +1,10 @@
-import { CardContainer } from './styles';
+import { StyledCardContainer, StyledCardTitle } from './styles';
 
-export default function Card({ children }) {
-  return <CardContainer>{children}</CardContainer>;
+export default function Card({ children, title }) {
+  return (
+    <StyledCardContainer>
+      {title && <StyledCardTitle>{title}</StyledCardTitle>}
+      {children}
+    </StyledCardContainer>
+  );
 }

@@ -1,18 +1,20 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Card from '../../../components/Card';
 import PRODUCTS from '../../../constants/products';
-import { StyledSectionCentered } from '../../../styles';
+import { StyledGlobalLink, StyledSection } from '../../../styles';
 
 export default function ProductList() {
   const currentPath = useLocation().pathname;
   return (
-    <StyledSectionCentered>
+    <StyledSection>
       {PRODUCTS.map(product => (
-        <Card key={product.id}>
-          <h3>{product.name}</h3>
-          <Link to={`${currentPath}/${product.name.toLowerCase()}`}>Details</Link>
+        <Card key={product.id} title={product.name}>
+          <p>{product.description}</p>
+          <StyledGlobalLink to={`${currentPath}/${product.name.toLowerCase()}`}>
+            Check out!
+          </StyledGlobalLink>
         </Card>
       ))}
-    </StyledSectionCentered>
+    </StyledSection>
   );
 }

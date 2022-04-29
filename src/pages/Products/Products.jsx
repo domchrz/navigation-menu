@@ -1,9 +1,10 @@
+import { StyledSection } from '../../styles';
 import ProductList from './ProductList';
 
 export default function Products() {
   return (
-    <div>
+    <StyledSection>
       <ProductList />
-    </div>
+    </StyledSection>
   );
 }

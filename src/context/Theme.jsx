@@ -10,7 +10,7 @@ const theme = {
     warning: '#dc143c;'
   },
   fonts: {
-    sansSerf: `'Playfair Display', sans-serif`,
+    sansSerif: `'Playfair Display', sans-serif`,
     serif: `'Ms Madi', cursive`,
     materialIcon: `
     display: flex;
@@ -22,7 +22,7 @@ const theme = {
   },
   effects: {
     borderRadius: '0.35em',
-    boxShadow: '.1rem .1rem .5rem hsla(0, 0%, 0%, .3)',
+    boxShadow: '.07rem .07rem .5rem hsla(0, 0%, 0%, .15)',
   }
 };
 

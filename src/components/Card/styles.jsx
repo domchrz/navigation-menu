@@ -1,19 +1,24 @@
 import styled from 'styled-components';
 
-export const CardContainer = styled.div`
+export const StyledCardContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: ${props => (props.row ? 'row' : 'column')};
   width: fit-content;
   max-width: 40rem;
   border-radius: 0.25rem;
   padding: 2rem;
   background-color: ${({ theme }) => theme.colors.secondary};
   box-shadow: ${({ theme }) => theme.effects.boxShadow};
-  transition: transform .5s;
+  transition: background-color 0.7s;
 
   &:hover {
-    transform: scale(1.05);
+    background-color: ${({ theme }) => theme.colors.mainContrast};
   }
+`;
+
+export const StyledCardTitle = styled.h3`
+  font-size: 1.6rem;
+  font-family: ${({ theme }) => theme.fonts.serif};
 `;

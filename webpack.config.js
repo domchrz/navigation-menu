@@ -10,7 +10,7 @@ const mode =
 module.exports = {
   mode: mode,
   entry: {
-    bundle: path.resolve(__dirname, 'src/index.js'),
+    bundle: path.resolve(__dirname, 'src/index.jsx'),
   },
   output: {
     filename: '[name].[contenthash].js',
@@ -55,8 +55,6 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          'postcss-loader',
-          'sass-loader',
         ],
       },
     ],

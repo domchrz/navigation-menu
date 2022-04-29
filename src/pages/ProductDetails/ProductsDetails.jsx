@@ -1,7 +1,6 @@
 import PRODUCTS from '../../constants/products';
 import { useParams, useHistory } from 'react-router-dom';
-import { StyledSectionCentered } from '../../styles';
-// import { Link } from 'react-router-dom';
+import { StyledButton, StyledSection } from '../../styles';
 import Card from '../../components/Card';
 
 export default function ProductDetails() {
@@ -13,13 +12,19 @@ export default function ProductDetails() {
   ).children.find(prod => prod.id == params.id);
   console.log(product);
   return (
-    <StyledSectionCentered>
-      <Card>
-        <h2>{product.name}</h2>
+    <StyledSection>
+      <Card title={product.name}>
         <p>{product.description}</p>
-        <button onClick={() => history.goBack()}>Go back one</button>
-        <button onClick={() => history.go(-2)}>Go back twice</button>
+        <p>Starting at: {product.price}</p>
+        <div style={{ display: 'flex', gap: '2rem', marginTop: '1rem' }}>
+          <StyledButton onClick={() => history.goBack()}>
+            Go back once!
+          </StyledButton>
+          <StyledButton onClick={() => history.go(-2)}>
+            Go back twice!
+          </StyledButton>
+        </div>
       </Card>
-    </StyledSectionCentered>
+    </StyledSection>
   );
 }

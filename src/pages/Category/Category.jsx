@@ -1,8 +1,7 @@
 import PRODUCTS from '../../constants/products';
 import { useParams, useLocation } from 'react-router-dom';
-import { CardContainer } from '../../components/Card/styles';
-import { StyledSectionCentered } from '../../styles';
-import { Link } from 'react-router-dom';
+import { StyledGlobalLink, StyledSection } from '../../styles';
+import Card from '../../components/Card';
 
 export default function Category() {
   const category = useParams().name;
@@ -10,17 +9,16 @@ export default function Category() {
 
   // console.log(object);
   return (
-    <StyledSectionCentered>
+    <StyledSection>
       {category &&
         PRODUCTS.find(cat => cat.name.toLowerCase() === category).children.map(
           prod => (
-            <CardContainer key={prod.id}>
-              <h3>{prod.name}</h3>
-              <p>{prod.id}</p>
-              <Link to={`${currentPath}/${prod.id}`}>Select</Link>
-            </CardContainer>
+            <Card key={prod.id} title={`${prod.id}. ${prod.name}`}>
+              <p>Checkout this product and learn more about it in the details!</p>
+              <StyledGlobalLink to={`${currentPath}/${prod.id}`}>Select</StyledGlobalLink>
+            </Card>
           )
         )}
-    </StyledSectionCentered>
+    </StyledSection>
   );
 }
