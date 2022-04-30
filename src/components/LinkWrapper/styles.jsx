@@ -13,9 +13,10 @@ const linkStyles = css`
   background-color: ${props =>
     props.isActive ? props.theme.colors.mainContrast : props.theme.colors.main};
   border: solid 1px ${props => props.theme.colors.secondary};
+  transition: color .3s;
 
   &:hover {
-    color: var(--action);
+    color: ${({ theme }) => theme.colors.action};
   }
 `;
 

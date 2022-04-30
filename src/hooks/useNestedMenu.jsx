@@ -46,7 +46,7 @@ const useNestedMenu = (menuItems, delay, navRef) => {
     e.stopPropagation();
     openMenu
       ? debounce(0, () => {})
-      : debounce(delay, () => closeNested(menuItems));
+      : debounce(delay * 1.5, () => closeNested(menuItems));
   };
 
   const openSubmenu = (name, e = null) => {

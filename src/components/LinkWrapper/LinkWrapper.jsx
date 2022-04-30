@@ -11,9 +11,12 @@ const LinkWrapper = forwardRef(function LinkWrap(props, ref) {
             ref={ref}
             isNested={props.isNested}
             onMouseEnter={props.handleEnter}>
-            <span>{props.item.name}{props.item.children?.length && ' >'}</span>
-            {props.children}
+            <span>
+              {props.item.name}
+              {props.item.children?.length && ' >'}
+            </span>
           </MenuItem>
+          {props.children}
         </>
       )}
       {props.isNested && props.item.path && (
@@ -23,9 +26,12 @@ const LinkWrapper = forwardRef(function LinkWrap(props, ref) {
             ref={ref}
             to={props.item.path}
             onMouseEnter={props.handleEnter}>
-            <span>{props.item.name}{props.item.children?.length && ' >'}</span>
-            {props.children}
+            <span>
+              {props.item.name}
+              {props.item.children?.length && ' >'}
+            </span>
           </StyledLink>
+          {props.children}
         </>
       )}
       {!props.isNested && props.item.path && props.item.path !== '/' && (
@@ -35,9 +41,12 @@ const LinkWrapper = forwardRef(function LinkWrap(props, ref) {
             to={props.item.path}
             onClick={e => props.handleClick(e, false, 0)}
             onMouseEnter={props.handleEnter}>
-            <span>{props.item.name}{props.item.children?.length && ' v'}</span>
-            {props.children}
+            <span>
+              {props.item.name}
+              {props.item.children?.length && ' v'}
+            </span>
           </StyledNavLink>
+          {props.children}
         </>
       )}
       {props.item.path === '/' && (
@@ -49,8 +58,8 @@ const LinkWrapper = forwardRef(function LinkWrap(props, ref) {
             onClick={e => props.handleClick(e, false, 0)}
             onMouseEnter={props.handleEnter}>
             {props.item.name}
-            {props.children}
           </StyledNavLink>
+          {props.children}
         </>
       )}
     </>

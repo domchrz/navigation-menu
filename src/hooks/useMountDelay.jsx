@@ -29,7 +29,7 @@ export default function useMountDelay(items, areMounted, delay) {
       if (!debounce[key]) return;
       if (areMounted[key] !== prevMounted[key]) {
         areMounted[key]
-          ? debounce[key](150, () => dispatch(actions[`${key}Open`]))
+          ? debounce[key](200, () => dispatch(actions[`${key}Open`]))
           : debounce[key](delay, () => dispatch(actions[`${key}Close`]));
       }
       setPrevMounted(areMounted);
