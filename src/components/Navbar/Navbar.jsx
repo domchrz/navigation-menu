@@ -13,7 +13,7 @@ function navbar() {
       onMouseLeave={handleMenuLeave}
       onMouseOver={e => handleMenuLeave(e, true)}
       ref={ref => !navRef.current && setNavRef(prevState => prevState.current = ref)}>
-      {renderMenu(MENU_ITEMS)}
+      {renderMenu()}
     </StyledNav>
   );
 }

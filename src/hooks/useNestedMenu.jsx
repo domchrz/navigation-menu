@@ -12,9 +12,23 @@ const useNestedMenu = (menuItems, delay, navRef) => {
   const [showChildren, dispatch] = useReducer(reducer, initState);
   const [refs, setRefs] = useState({});
   const shouldRender = useMountDelay(menuItems, showChildren, delay);
+  const [windowDim, setWindowDim] = useState({ width: 0, height: 0 });
 
   const debounce = useCallback(db(), []);
-     
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowDim({ width: window.innerWidth, height: window.innerHeight });
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    closeNested(menuItems);
+  }, [windowDim]);
 
   useEffect(() => {
     for (const key in showChildren) {
@@ -88,7 +102,7 @@ const useNestedMenu = (menuItems, delay, navRef) => {
     [menuItems, showChildren]
   );
 
-  const renderMenu = (items, isNested = false, parent = null) => {
+  const renderMenu = (items = menuItems, isNested = false, parent = null) => {
     return items.map(item => (
       <LinkWrapper
         key={item.name}
@@ -114,8 +128,8 @@ const useNestedMenu = (menuItems, delay, navRef) => {
             }}
             anchorRef={refs[item.name]}
             delay={delay}
-            shouldMount={showChildren[item.name]}
-            stickToBorder={isNested ? 'right' : 'bottom'}>
+            random={Math.random()}
+            shouldMount={showChildren[item.name]}>
             {renderMenu(item.children, true, item)}
           </Dropdown>
         )}

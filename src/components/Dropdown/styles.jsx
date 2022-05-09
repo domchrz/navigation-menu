@@ -7,10 +7,10 @@ export const DropdownContainer = styled.div`
   ${props => `top: ${props.renderOrigin.top}px`};
   ${props => `left: ${props.renderOrigin.left}px`};
   z-index: 1;
-  transform: translateY(-100%);
+  transform: translateY(0);
 
   &.mount {
-    animation: mount ${({ delay }) => delay}ms ease-out forwards;
+    animation: mount ${({ delay }) => delay}ms ease-out;
   }
 
   &.unmount {

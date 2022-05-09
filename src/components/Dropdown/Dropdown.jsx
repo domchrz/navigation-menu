@@ -7,13 +7,14 @@ export default function Dropdown({
   shouldMount,
   delay,
   children,
-  origin
+  origin,
+  // random
 }) {
   const [renderOrigin, setRenderOrigin] = useState({});
 
   useEffect(() => {
     setRenderOrigin(origin);
-  }, [anchorRef]);
+  }, [anchorRef, origin]);
 
   return ReactDOM.createPortal(
     <>
