@@ -8,20 +8,20 @@ const SubmenuLink = withChildren(LinkWrapper);
 const Submenu = withDropdown(MenuItems);
 
 export default function MenuItem(props) {
-  const { showChildren, toggleChildren, close } = useSubmenu();
-  const handleClick = props.item.children?.length ? toggleChildren(props.item.name) : close;
+  const { closeSubmenu } = useSubmenu();
 
   return (
     <>
       {props.item.children?.length ? (
-        <SubmenuLink
-          {...props}
-          onClick={handleClick}
-          showChildren={showChildren[props.item.name]}>
-          <Submenu items={props.item.children} isChild={true} isRootDropdown={!props.isChild} />
+        <SubmenuLink {...props}>
+          <Submenu
+            items={props.item.children}
+            isChild={true}
+            isRootDropdown={!props.isChild}
+          />
         </SubmenuLink>
       ) : (
-        <LinkWrapper {...props} onClick={handleClick} />
+        <LinkWrapper onClick={closeSubmenu} {...props} />
       )}
     </>
   );

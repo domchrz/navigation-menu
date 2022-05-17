@@ -5,18 +5,16 @@ import MenuItems from '../MenuItems';
 import { StyledNav } from './styles';
 
 export default function Navbar() {
-  const { close } = useSubmenu();
+  const { closeSubmenu } = useSubmenu();
 
   useEffect(() => {
-    const closeSubmenu = () => close();
-
     window.addEventListener('click', closeSubmenu);
 
     return () => window.removeEventListener('click', closeSubmenu);
   }, []);
 
   return (
-    <StyledNav>
+    <StyledNav onClick={closeSubmenu}>
       <MenuItems items={MENU_ITEMS} direction="row" />
     </StyledNav>
   );

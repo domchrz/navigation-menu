@@ -19,10 +19,11 @@ export const SubmenuProvider = ({ children }) => {
     dispatch(actions[`open${name}`]);
   };
 
-  const close = () => dispatch(actions.closeSubmenu);
+  const closeSubmenu = () => dispatch(actions.closeSubmenu);
 
   return (
-    <SubmenuContext.Provider value={{ showChildren, toggleChildren, close }}>
+    <SubmenuContext.Provider
+      value={{ showChildren, toggleChildren, closeSubmenu }}>
       {children}
     </SubmenuContext.Provider>
   );
