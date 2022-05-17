@@ -1,16 +1,15 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar';
-import About from './pages/About';
-import Category from './pages/Category';
-import Home from './pages/Home';
-import ProductDetails from './pages/ProductDetails';
-import Products from './pages/Products';
+import { SubmenuProvider } from './context/Submenu';
+import { Navbar } from './components';
+import { About, Category, Home, ProductDetails, Products } from './pages';
 
 export default function App() {
   return (
     <>
       <header>
-        <Navbar />
+        <SubmenuProvider>
+          <Navbar />
+        </SubmenuProvider>
       </header>
       <main>
         <Switch>

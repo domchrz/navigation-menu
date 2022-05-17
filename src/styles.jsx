@@ -23,6 +23,14 @@ main {
 i {
   font-style: normal;
 }
+
+ul {
+  list-style: none;
+}
+
+li {
+  list-style: none;
+}
 `;
 
 export const StyledH1 = styled.h1`

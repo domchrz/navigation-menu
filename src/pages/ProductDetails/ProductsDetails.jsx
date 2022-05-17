@@ -6,11 +6,9 @@ import Card from '../../components/Card';
 export default function ProductDetails() {
   const params = useParams();
   const history = useHistory();
-  console.log(params);
   const product = PRODUCTS.find(
     cat => cat.name.toLowerCase() === params.name
   ).children.find(prod => prod.id == params.id);
-  console.log(product);
   return (
     <StyledSection>
       <Card title={product.name}>

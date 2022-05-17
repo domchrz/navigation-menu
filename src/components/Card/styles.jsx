@@ -4,7 +4,7 @@ export const StyledCardContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: ${props => (props.row ? 'row' : 'column')};
+  flex-direction: column;
   width: fit-content;
   max-width: 40rem;
   border-radius: 0.25rem;

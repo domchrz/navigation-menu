@@ -1,23 +1,23 @@
-import React, { createRef, useState } from 'react';
-import useNestedMenu from '../../hooks/useNestedMenu';
+import { useEffect } from 'react';
 import MENU_ITEMS from '../../constants/menuItems';
+import useSubmenu from '../../hooks/useSubmenu';
+import MenuItems from '../MenuItems';
 import { StyledNav } from './styles';
 
-function navbar() {
-  const delay = 300;
-  const [navRef, setNavRef] = useState(createRef());
-  const [{ renderMenu, handleMenuLeave }] = useNestedMenu(MENU_ITEMS, delay, navRef);
+export default function Navbar() {
+  const { close } = useSubmenu();
+
+  useEffect(() => {
+    const closeSubmenu = () => close();
+
+    window.addEventListener('click', closeSubmenu);
+
+    return () => window.removeEventListener('click', closeSubmenu);
+  }, []);
 
   return (
-    <StyledNav
-      onMouseLeave={handleMenuLeave}
-      onMouseOver={e => handleMenuLeave(e, true)}
-      ref={ref => !navRef.current && setNavRef(prevState => prevState.current = ref)}>
-      {renderMenu()}
+    <StyledNav>
+      <MenuItems items={MENU_ITEMS} direction="row" />
     </StyledNav>
   );
 }
-
-const Navbar = React.memo(navbar);
-
-export default Navbar;

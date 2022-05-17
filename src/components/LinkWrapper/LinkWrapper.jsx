@@ -1,69 +1,38 @@
-import { forwardRef } from 'react';
-import { MenuItem, StyledLink, StyledNavLink } from './styles';
+import { StyledLi, StyledLink, StyledMenuItem, StyledNavLink } from './styles';
 
-const LinkWrapper = forwardRef(function LinkWrap(props, ref) {
+const LinkWrapper = ({ onClick, children, isChild, hasChildren, item }) => {
   return (
-    <>
-      {!props.item.path && (
+    <StyledLi
+      onClick={e => {
+        e.stopPropagation();
+        onClick();
+      }}>
+      {!item.path && (
         <>
-          <MenuItem
-            isActive={props.isActive}
-            ref={ref}
-            isNested={props.isNested}
-            onMouseEnter={props.handleEnter}>
-            <span>
-              {props.item.name}
-              {props.item.children?.length && ' >'}
-            </span>
-          </MenuItem>
-          {props.children}
+          <StyledMenuItem>
+            {item.name} {hasChildren && '>'}
+          </StyledMenuItem>
+          {children}
         </>
       )}
-      {props.isNested && props.item.path && (
+      {isChild && item.path && (
         <>
-          <StyledLink
-            isActive={props.isActive}
-            ref={ref}
-            to={props.item.path}
-            onMouseEnter={props.handleEnter}>
-            <span>
-              {props.item.name}
-              {props.item.children?.length && ' >'}
-            </span>
+          <StyledLink to={item.path}>
+            {item.name} {hasChildren && '>'}
           </StyledLink>
-          {props.children}
+          {children}
         </>
       )}
-      {!props.isNested && props.item.path && props.item.path !== '/' && (
+      {!isChild && item.path && (
         <>
-          <StyledNavLink
-            ref={ref}
-            to={props.item.path}
-            onClick={e => props.handleClick(e, false, 0)}
-            onMouseEnter={props.handleEnter}>
-            <span>
-              {props.item.name}
-              {props.item.children?.length && ' v'}
-            </span>
+          <StyledNavLink exact to={item.path}>
+            {item.name} {hasChildren && 'v'}
           </StyledNavLink>
-          {props.children}
+          {children}
         </>
       )}
-      {props.item.path === '/' && (
-        <>
-          <StyledNavLink
-            ref={ref}
-            exact
-            to={props.item.path}
-            onClick={e => props.handleClick(e, false, 0)}
-            onMouseEnter={props.handleEnter}>
-            {props.item.name}
-          </StyledNavLink>
-          {props.children}
-        </>
-      )}
-    </>
+    </StyledLi>
   );
-});
+};
 
 export default LinkWrapper;

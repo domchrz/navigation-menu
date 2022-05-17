@@ -7,7 +7,6 @@ export default function Category() {
   const category = useParams().name;
   const currentPath = useLocation().pathname;
 
-  // console.log(object);
   return (
     <StyledSection>
       {category &&
