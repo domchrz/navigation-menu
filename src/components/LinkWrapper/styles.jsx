@@ -16,6 +16,7 @@ const linkStyles = css`
     props.isActive ? props.theme.colors.main : props.theme.colors.secondary};
   background-color: ${props =>
     props.isActive ? props.theme.colors.mainContrast : props.theme.colors.main};
+  ${({ isInactive }) => isInactive && `background-color: #ddd;`}
   border: solid 1px ${props => props.theme.colors.secondary};
   transition: color 0.3s;
 

@@ -1,31 +1,39 @@
 import { StyledLi, StyledLink, StyledMenuItem, StyledNavLink } from './styles';
 
-const LinkWrapper = ({ onClick, children, isChild, hasChildren, item }) => {
+const LinkWrapper = ({
+  onClick,
+  children,
+  depth,
+  isLink,
+  hasChildren,
+  isInactive,
+  item,
+}) => {
   return (
     <StyledLi
       onClick={e => {
         e.stopPropagation();
         onClick();
       }}>
-      {!item.path && (
+      {!isLink && (
         <>
-          <StyledMenuItem>
+          <StyledMenuItem isInactive={isInactive}>
             {item.name} {hasChildren && '>'}
           </StyledMenuItem>
           {children}
         </>
       )}
-      {isChild && item.path && (
+      {depth > 0 && isLink && (
         <>
-          <StyledLink to={item.path}>
+          <StyledLink to={item.path} isInactive={isInactive}>
             {item.name} {hasChildren && '>'}
           </StyledLink>
           {children}
         </>
       )}
-      {!isChild && item.path && (
+      {depth === 0 && (
         <>
-          <StyledNavLink exact to={item.path}>
+          <StyledNavLink exact={item.path === '/'} to={item.path}>
             {item.name} {hasChildren && 'v'}
           </StyledNavLink>
           {children}

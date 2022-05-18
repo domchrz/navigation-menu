@@ -1,5 +1,4 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { SubmenuProvider } from './context/Submenu';
 import { Navbar } from './components';
 import { About, Category, Home, ProductDetails, Products } from './pages';
 
@@ -7,9 +6,7 @@ export default function App() {
   return (
     <>
       <header>
-        <SubmenuProvider>
-          <Navbar />
-        </SubmenuProvider>
+        <Navbar />
       </header>
       <main>
         <Switch>
