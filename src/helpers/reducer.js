@@ -1,12 +1,14 @@
 const createState = items => {
   let state = {};
   items.forEach(item => {
-    if (item.children) {
-      state = {
-        ...state,
-        [item.name]: false,
-      };
-    }
+    state = {
+      ...state,
+      [item.name]: {
+        showChildren: false,
+        isInactive: false,
+        hasChildren: !!item.children,
+      },
+    };
   });
   return state;
 };
@@ -15,7 +17,9 @@ const createReducer = initState => {
   return (state = initState, { payload } = '') => {
     let updatedState = { ...state };
     for (const key in state) {
-      updatedState[key] = key === payload;
+      updatedState[key].showChildren =
+        updatedState[key].hasChildren && key === payload;
+      updatedState[key].isInactive = key !== payload;
     }
     return updatedState;
   };
@@ -26,4 +30,3 @@ export const createReducerHelpers = items => {
   const reducer = createReducer(initState);
   return { reducer, initState };
 };
-

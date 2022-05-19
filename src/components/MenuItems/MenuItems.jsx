@@ -16,15 +16,6 @@ export default function MenuItems({ items, depth = 0, direction = 'column' }) {
 
   const createAction = name => () => dispatch({ payload: name });
 
-  const setIsInactive = name => {
-    if (depth < 0) return;
-    let isInactive;
-    for (const key in state) {
-      isInactive = (state[key] === true && key !== name) || isInactive;
-    }
-    return isInactive;
-  };
-
   return (
     <StyledUl direction={direction} depth={depth}>
       {items.map(item => (
@@ -32,9 +23,8 @@ export default function MenuItems({ items, depth = 0, direction = 'column' }) {
           key={item.name}
           item={item}
           depth={depth}
-          isInactive={setIsInactive(item.name)}
           onClick={createAction(item.name)}
-          showChildren={!!state[item.name]}
+          state={state[item.name]}
         />
       ))}
     </StyledUl>
