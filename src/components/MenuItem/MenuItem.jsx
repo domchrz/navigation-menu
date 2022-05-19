@@ -5,6 +5,7 @@ export default function MenuItem({
   item,
   state: { showChildren, isInactive, hasChildren },
   depth,
+  closeSubmenu,
   ...props
 }) {
   return (
@@ -14,8 +15,15 @@ export default function MenuItem({
       depth={depth}
       isLink={!!item.path}
       isInactive={isInactive}
+      closeSubmenu={closeSubmenu}
       hasChildren={hasChildren}>
-      {showChildren && <MenuItems items={item.children} depth={depth + 1} />}
+      {showChildren && (
+        <MenuItems
+          closeSubmenu={closeSubmenu}
+          items={item.children}
+          depth={depth + 1}
+        />
+      )}
     </LinkWrapper>
   );
 }

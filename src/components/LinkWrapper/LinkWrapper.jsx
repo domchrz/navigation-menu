@@ -1,7 +1,7 @@
 import { StyledLi, StyledLink, StyledMenuItem, StyledNavLink } from './styles';
 
 const LinkWrapper = ({
-  onClick,
+  handleClick,
   children,
   depth,
   isLink,
@@ -13,7 +13,7 @@ const LinkWrapper = ({
     <StyledLi
       onClick={e => {
         e.stopPropagation();
-        onClick();
+        handleClick();
       }}>
       {!isLink && (
         <>
