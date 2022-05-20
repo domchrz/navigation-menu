@@ -2,7 +2,7 @@
 
 Functionalities
 * SPA
-* reusable nav-menu thanks to useNestedMenu hook & reducer/actions generator
+* menu that renders subemnu and applies styling to active menu branch
 
 React functionalities used
 * react-router-dom
